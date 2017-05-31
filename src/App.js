@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
 import { connect } from 'react-redux';
-import { createMap } from './actions/map';
-import { Button } from 'react-bootstrap';
+import { createMap, addFeatures } from './actions/map';
+import Header from './components/header'
+import Features from './components/features'
 
 const mapStateToProps = (state) => {
   return {
@@ -15,6 +15,9 @@ const mapDispatchToProps = (dispatch) => {
   return {
     createMap: (domNode) => {
       dispatch(createMap(domNode))
+    },
+    addFeatures: (mapCtrl) => {
+      dispatch(addFeatures(this.props.mapCtrl.map))
     }
   }
 }
@@ -30,11 +33,9 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <div className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h2><Button bsStyle="primary">Welcome</Button> to React</h2>
-        </div>
+        <Header />
         <div ref='mapView' className='map-view'></div>
+        <Features map={this.props.mapCtrl}/>
       </div>
     );
   }

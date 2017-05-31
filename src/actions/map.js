@@ -5,3 +5,9 @@ export const createMap = (domNode) => {
   }
 }
 
+export const addFeatures = (map) => {
+  return {
+    type: 'ADD_FEATURES',
+    map
+  }
+}
