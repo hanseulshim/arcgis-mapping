@@ -1,8 +1,6 @@
 import MapView from 'esri/views/MapView';
 import EsriMap from 'esri/Map';
-import FeatureLayer from 'esri/layers/FeatureLayer'
 import features from '../constants/features'
-
 const map = (state = { }, action) => {
 
   switch (action.type) {
@@ -12,24 +10,39 @@ const map = (state = { }, action) => {
           container: action.domNode,
           map: new EsriMap({
             basemap: 'hybrid',
-            layers: features
-          }),
-          extent: { // autocasts as new Extent()
-            xmin: -17570980.1213845,
-            ymin: -4581917.34654093,
-            xmax: 17074834.7168934,
-            ymax: 8675820.74498175,
-            spatialReference: 102100
-          }
-
+            layers: features,
+            center: [-73.950, 40.702],
+            zoom: 11
+          })
         })
       }
-    case 'ADD_FEATURES':
-      return Object.assign({}, state, {
-        layers: [new FeatureLayer({
-          url: "https://services.arcgis.com/V6ZHFr6zdgNZuVG0/arcgis/rest/services/Boston_Marathon/FeatureServer/0"
-        })]
-      })
+    case 'TOGGLE_FEATURE':
+      // return Object.assign({}, state, {
+      //   mapCtrl.map.layers.items[action.index].visible: !state.mapCtrl.map.layers.items[action.index].visible
+      // })
+      return {
+        mapCtrl:{
+          ...state.mapCtrl,
+          map:{
+            ...state.mapCtrl.map,
+            layers:{
+              ...state.mapCtrl.map.layers,
+              items:{
+                [action.index] : {
+                  ...state.mapCtrl.map.layers.items[action.index],
+                  visible: true
+                }
+              }
+                // state.mapCtrl.map.layers.items.map((item, index) =>
+                //   index === action.index
+                //   ? {...item, visible:false}
+                //   : item
+                // )
+
+            }
+          }
+        }
+      }
     default:
       return state
   }

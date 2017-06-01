@@ -5,9 +5,9 @@ export const createMap = (domNode) => {
   }
 }
 
-export const addFeatures = (map) => {
+export const toggleFeature = (index) => {
   return {
-    type: 'ADD_FEATURES',
-    map
+    type: 'TOGGLE_FEATURE',
+    index
   }
 }

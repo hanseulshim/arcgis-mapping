@@ -1,8 +1,5 @@
-import FeatureLayer from 'esri/layers/FeatureLayer'
+import bostonMarathon from './bostonMarathon'
+import demographic from './demographic'
 
-const bostonMarathon = new FeatureLayer({
-  url: "https://services.arcgis.com/V6ZHFr6zdgNZuVG0/arcgis/rest/services/Boston_Marathon/FeatureServer/0"
-})
-
-const features = [bostonMarathon]
+const features = [bostonMarathon, demographic]
 export default features

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import { connect } from 'react-redux';
-import { createMap, addFeatures } from './actions/map';
+import { createMap, toggleFeature } from './actions/map';
 import Header from './components/header'
 import Features from './components/features'
 
@@ -16,8 +16,8 @@ const mapDispatchToProps = (dispatch) => {
     createMap: (domNode) => {
       dispatch(createMap(domNode))
     },
-    addFeatures: (mapCtrl) => {
-      dispatch(addFeatures(this.props.mapCtrl.map))
+    toggleFeature: (index) => {
+      dispatch(toggleFeature(index))
     }
   }
 }
@@ -32,7 +32,7 @@ class App extends Component {
   render() {
     let feature =
       this.props.mapCtrl ?
-      <Features map={this.props.mapCtrl.map}/>
+      <Features map={this.props.mapCtrl.map} toggleFeature={this.props.toggleFeature}/>
       :
       <Features />
     return (
