@@ -12,10 +12,10 @@ const map = (state = { }, action) => {
             layers: features
           }),
           extent: { // autocasts as new Extent()
-            xmin: -13000000,
-            ymin: 4247000,
-            xmax: -9150000,
-            ymax: 4247784,
+            xmin: -17570980.1213845,
+            ymin: -4581917.34654093,
+            xmax: 17074834.7168934,
+            ymax: 8675820.74498175,
             spatialReference: 102100
           }
         })

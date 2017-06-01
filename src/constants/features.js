@@ -1,5 +1,6 @@
 import bostonMarathon from './bostonMarathon'
-import demographic from './demographic'
+import appleStores from './appleStores'
+import californiaCities from './californiaCities'
 
-const features = [bostonMarathon, demographic]
+const features = [bostonMarathon, appleStores, californiaCities]
 export default features

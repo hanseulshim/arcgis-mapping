@@ -8,11 +8,9 @@ import FeaturesContainer from './containers/featuresContainer'
 import Counter from './components/counter'
 
 const mapStateToProps = (state) => {
-  console.log(state.counter.counter)
   return {
     mapCtrl: state.map.mapCtrl,
-    counter: state.counter.counter,
-    toggled: state.toggled
+    counter: state.counter.counter
   }
 }
 
@@ -54,9 +52,9 @@ class App extends Component {
     return (
       <div className="App">
         <Header />
-        <div ref='mapView' className='map-view'></div>
         {feature}
         <Counter selected={this.props.counter} />
+        <div ref='mapView' className='map-view'></div>
       </div>
     );
   }

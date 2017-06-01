@@ -4,7 +4,7 @@ class Header extends Component{
   render() {
     return (
       <div className="App-header">
-        <h2>Mapview with multiple features</h2>
+        <h2>Select features to see them on the map</h2>
       </div>
     )
   }

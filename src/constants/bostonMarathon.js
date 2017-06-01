@@ -2,7 +2,7 @@ import FeatureLayer from 'esri/layers/FeatureLayer'
 
 var template = {
   title: "Boston Marathon 2013",
-  content: "{STATE_NAME}:  {Percent_Fi} of starters finished",
+  content: "<p>{STATE_NAME}:  {Percent_Fi} of starters finished</p>",
   fieldInfos: [{
     fieldName: "Number_Ent",
       label: "Entrants"
@@ -12,15 +12,7 @@ var template = {
     },{
       fieldName: "Number_Fin",
       label: "Finishers"
-    }],
-    mediaInfos:[{ //define the bar chart
-      caption: "",
-      type:"barchart",
-      value:{
-        theme: "Dollar",
-        fields:["Number_Ent","Number_Sta","Number_Fin"]
-      }
-  }]
+    }]
 };
 
 var bostonMarathon = new FeatureLayer({
