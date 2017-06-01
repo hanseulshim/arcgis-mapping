@@ -29,13 +29,17 @@ class App extends Component {
       this.props.createMap(this.refs.mapView);
     }
   }
-
   render() {
+    let feature =
+      this.props.mapCtrl ?
+      <Features map={this.props.mapCtrl.map}/>
+      :
+      <Features />
     return (
       <div className="App">
         <Header />
         <div ref='mapView' className='map-view'></div>
-        <Features map={this.props.mapCtrl}/>
+        {feature}
       </div>
     );
   }

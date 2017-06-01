@@ -3,7 +3,7 @@ import { Button } from 'react-bootstrap';
 
 class Features extends Component{
   handleClick(){
-    console.log(this.props.map)
+    console.log(this.props.map.layers)
   }
   render(){
     return (
