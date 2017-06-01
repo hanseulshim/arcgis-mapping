@@ -30,7 +30,8 @@ var template = {
 const demographic = new FeatureLayer({
   url: "https://services.arcgis.com/V6ZHFr6zdgNZuVG0/ArcGIS/rest/services/NYCDemographics1/FeatureServer/0",
   outFields: ["*"],
-  popupTemplate: template
+  popupTemplate: template,
+  visible: false
 });
 
 export default demographic

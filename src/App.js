@@ -2,12 +2,15 @@ import React, { Component } from 'react';
 import './App.css';
 import { connect } from 'react-redux';
 import { createMap, toggleFeature } from './actions/map';
+import { incrementCounter, decrementCounter } from './actions/counter';
 import Header from './components/header'
 import Features from './components/features'
 
 const mapStateToProps = (state) => {
   return {
-    mapCtrl: state.map.mapCtrl
+    mapCtrl: state.map.mapCtrl,
+    counter: state.counter,
+    toggled: state.toggled
   }
 }
 
@@ -18,6 +21,12 @@ const mapDispatchToProps = (dispatch) => {
     },
     toggleFeature: (index) => {
       dispatch(toggleFeature(index))
+    },
+    incrementCounter: () => {
+      dispatch(incrementCounter())
+    },
+    decrementCounter: () => {
+      dispatch(decrementCounter())
     }
   }
 }
@@ -32,7 +41,11 @@ class App extends Component {
   render() {
     let feature =
       this.props.mapCtrl ?
-      <Features map={this.props.mapCtrl.map} toggleFeature={this.props.toggleFeature}/>
+      <Features
+        items={this.props.mapCtrl.map.layers.items} toggleFeature={this.props.toggleFeature}
+        incrementCounter={this.props.incrementCounter}
+        decrementCounter={this.props.decrementCounter}
+      />
       :
       <Features />
     return (

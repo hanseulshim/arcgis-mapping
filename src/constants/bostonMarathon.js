@@ -26,7 +26,8 @@ var template = {
 var bostonMarathon = new FeatureLayer({
   url: "https://services.arcgis.com/V6ZHFr6zdgNZuVG0/arcgis/rest/services/Boston_Marathon/FeatureServer/0",
   outFields: ["*"],
-  popupTemplate: template
+  popupTemplate: template,
+  visible: false
 });
 
 export default bostonMarathon

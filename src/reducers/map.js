@@ -2,7 +2,6 @@ import MapView from 'esri/views/MapView';
 import EsriMap from 'esri/Map';
 import features from '../constants/features'
 const map = (state = { }, action) => {
-
   switch (action.type) {
     case 'CREATE_MAP':
       return {
@@ -10,16 +9,18 @@ const map = (state = { }, action) => {
           container: action.domNode,
           map: new EsriMap({
             basemap: 'hybrid',
-            layers: features,
-            center: [-73.950, 40.702],
-            zoom: 11
-          })
+            layers: features
+          }),
+          extent: { // autocasts as new Extent()
+            xmin: -13000000,
+            ymin: 4247000,
+            xmax: -9150000,
+            ymax: 4247784,
+            spatialReference: 102100
+          }
         })
       }
     case 'TOGGLE_FEATURE':
-      // return Object.assign({}, state, {
-      //   mapCtrl.map.layers.items[action.index].visible: !state.mapCtrl.map.layers.items[action.index].visible
-      // })
       return {
         mapCtrl:{
           ...state.mapCtrl,
@@ -27,18 +28,7 @@ const map = (state = { }, action) => {
             ...state.mapCtrl.map,
             layers:{
               ...state.mapCtrl.map.layers,
-              items:{
-                [action.index] : {
-                  ...state.mapCtrl.map.layers.items[action.index],
-                  visible: true
-                }
-              }
-                // state.mapCtrl.map.layers.items.map((item, index) =>
-                //   index === action.index
-                //   ? {...item, visible:false}
-                //   : item
-                // )
-
+              items: action.items
             }
           }
         }
