@@ -8,7 +8,7 @@ const map = (state = { }, action) => {
         mapCtrl: new MapView({
           container: action.domNode,
           map: new EsriMap({
-            basemap: 'hybrid',
+            basemap: 'gray',
             layers: features
           }),
           extent: { // autocasts as new Extent()

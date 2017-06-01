@@ -4,12 +4,14 @@ import { connect } from 'react-redux';
 import { createMap, toggleFeature } from './actions/map';
 import { incrementCounter, decrementCounter } from './actions/counter';
 import Header from './components/header'
-import Features from './components/features'
+import FeaturesContainer from './containers/featuresContainer'
+import Counter from './components/counter'
 
 const mapStateToProps = (state) => {
+  console.log(state.counter.counter)
   return {
     mapCtrl: state.map.mapCtrl,
-    counter: state.counter,
+    counter: state.counter.counter,
     toggled: state.toggled
   }
 }
@@ -41,18 +43,20 @@ class App extends Component {
   render() {
     let feature =
       this.props.mapCtrl ?
-      <Features
-        items={this.props.mapCtrl.map.layers.items} toggleFeature={this.props.toggleFeature}
+      <FeaturesContainer
+        items={this.props.mapCtrl.map.layers.items}
+        toggleFeature={this.props.toggleFeature}
         incrementCounter={this.props.incrementCounter}
         decrementCounter={this.props.decrementCounter}
       />
       :
-      <Features />
+      <FeaturesContainer />
     return (
       <div className="App">
         <Header />
         <div ref='mapView' className='map-view'></div>
         {feature}
+        <Counter selected={this.props.counter} />
       </div>
     );
   }
